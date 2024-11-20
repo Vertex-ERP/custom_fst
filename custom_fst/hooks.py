@@ -7,6 +7,15 @@ app_license = "mit"
 
 # Apps
 # ------------------
+doctype_js = {
+    
+    "Quotation" : "public/js/quotation.js"
+
+}
+override_doctype_class = {
+    "Quotation":"sales_commission.sales_commission.overrides.quotation.CustomQuotation"
+    }
+
 
 # required_apps = []
 

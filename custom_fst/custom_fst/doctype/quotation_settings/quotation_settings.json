@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-19 11:17:15.388865",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bid_bond_account",
+  "buy_value_account",
+  "miscellaneous_expenses_bid_account",
+  "account",
+  "cost_center"
+ ],
+ "fields": [
+  {
+   "fieldname": "bid_bond_account",
+   "fieldtype": "Link",
+   "label": "Bid Bond Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "buy_value_account",
+   "fieldtype": "Link",
+   "label": "Buy Value Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "miscellaneous_expenses_bid_account",
+   "fieldtype": "Link",
+   "label": "Miscellaneous Expenses Bid Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-11-19 11:17:15.388865",
+ "modified_by": "Administrator",
+ "module": "Custom Fst",
+ "name": "Quotation Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
