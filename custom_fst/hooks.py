@@ -9,11 +9,14 @@ app_license = "mit"
 # ------------------
 doctype_js = {
     
-    "Quotation" : "public/js/quotation.js"
+    "Quotation" : "public/js/quotation.js",
+    "Sales Order":"public/js/delivery_note.js"
+
+
 
 }
 override_doctype_class = {
-    "Quotation":"sales_commission.sales_commission.overrides.quotation.CustomQuotation"
+    "Quotation":"custom_fst.overrides.quotation.CustomQuotation"
     }
 
 
