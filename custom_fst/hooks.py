@@ -13,7 +13,7 @@ doctype_js = {
 
 }
 override_doctype_class = {
-    "Quotation":"sales_commission.sales_commission.overrides.quotation.CustomQuotation"
+    "Quotation":"custom_fst.overrides.quotation.CustomQuotation"
     }
 
 
