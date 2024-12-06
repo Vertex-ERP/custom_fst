@@ -20,6 +20,12 @@ override_doctype_class = {
     }
 
 
+override_doctype_dashboards = {
+	"Purchase Invoice": "custom_fst.overrides.purchase_invoice_dashboard.get_dashboard",
+	# "Employee": "hrms.overrides.dashboard_overrides.get_dashboard_for_employee",
+ 
+	# "Task": "custom_fst.task.get_dashboard_data"
+}
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
@@ -193,9 +199,7 @@ override_doctype_class = {
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-# 	"Task": "custom_fst.task.get_dashboard_data"
-# }
+
 
 # exempt linked doctypes from being automatically cancelled
 #
