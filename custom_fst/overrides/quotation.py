@@ -1,4 +1,5 @@
 import frappe
+
 from erpnext.selling.doctype.quotation.quotation import Quotation
 from frappe.model.document import Document
 
@@ -44,9 +45,10 @@ class CustomQuotation(Quotation):
     
    
     def on_change(self):
-        if self.status == "Lost" :
-            self.make_gl_entries()
-            self.db_update()
+        if self.status == "Lost" and not self.get("rfq_from_venders_and_evaluation"):
+            self.make_gl_entries() 
+            self.db_set("rfq_from_venders_and_evaluation", 1) 
+
 
     def make_gl_entries(self, gl_entries=None, from_repost=False):
         from erpnext.accounts.general_ledger import make_gl_entries
@@ -65,8 +67,8 @@ class CustomQuotation(Quotation):
         self.add_bid_bond_gl_entries(gl_entries)
         
         self.add_miscellaneous_expenses_gl_entries(gl_entries)
+        self.add_tender_purchase_gl_entries(self)
         
-        self.add_tender_purchase_gl_entries(gl_entries)
 
         
 
@@ -130,7 +132,6 @@ class CustomQuotation(Quotation):
                     item=self,
                 )
             )
-
     def add_tender_purchase_gl_entries(self, gl_entries):
         if self.buy_value > 0:
             settings = frappe.get_cached_doc('Quotation Settings', 'Quotation Settings')
@@ -160,3 +161,30 @@ class CustomQuotation(Quotation):
                     item=self,
                 )
             )
+
+# في ملف py. الذي يخص Delivery Note
+
+@frappe.whitelist()
+def get_sales_order_item_details(item_code, against_sales_order="SAL-ORD-00063"):
+    """
+    جلب تفاصيل Sales Order Item بناءً على item_code و against_sales_order
+    """
+    if not (item_code and against_sales_order):
+        frappe.msgprint("hi")
+        return {}
+
+    sales_order_item = frappe.db.get_value(
+        "Sales Order Item",
+        {
+            "item_code": item_code,
+            "parent": against_sales_order  # parent يمثل Sales Order
+        },
+        ["ordered_qty", "delivered_qty"],
+        as_dict=True
+    )
+    
+    return sales_order_item or {}
+# custom_fst/overrides/sales_order.py
+
+
+
