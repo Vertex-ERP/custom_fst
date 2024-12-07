@@ -10,7 +10,8 @@ app_license = "mit"
 doctype_js = {
     
     "Quotation" : "public/js/quotation.js",
-    "Sales Order":"public/js/delivery_note.js"
+    "Sales Order":"public/js/delivery_note.js",
+    "Delivery Note": "public/js/delivery_note.js"
 
 
 
