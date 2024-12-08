@@ -27,6 +27,16 @@ override_doctype_dashboards = {
  
 	# "Task": "custom_fst.task.get_dashboard_data"
 }
+fixtures = [
+    {
+        "doctype": "Custom Field",
+        "filters": [
+            ["dt", "=", "Quotation"],
+            ["fieldname", "=", "custom_make_gl"]
+        ]
+    }
+]
+
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
