@@ -17,7 +17,8 @@ doctype_js = {
 
 }
 override_doctype_class = {
-    "Quotation":"custom_fst.overrides.quotation.CustomQuotation"
+    "Quotation":"custom_fst.overrides.quotation.CustomQuotation",
+
     }
 
 
