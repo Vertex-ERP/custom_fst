@@ -1,0 +1,166 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-12-08 22:33:23.528956",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "details_section",
+  "naming_series",
+  "check_type",
+  "bond_type",
+  "bond",
+  "request__number",
+  "bond_value",
+  "from_quotation",
+  "from_sales_order",
+  "column_break_gins",
+  "bond_purpose",
+  "issued_from_bank",
+  "issuing_date",
+  "expiry__date",
+  "bond_status",
+  "final_referral_number",
+  "company"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "check_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Check Type",
+   "options": "\nTender Bid Bond\nPerformance bond\nMaintenance bond",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bond_type",
+   "fieldtype": "Select",
+   "label": "Bond Type",
+   "options": "\nBank guarantee\nCertified Cheque"
+  },
+  {
+   "fieldname": "bond",
+   "fieldtype": "Data",
+   "label": "Bond"
+  },
+  {
+   "fieldname": "request__number",
+   "fieldtype": "Data",
+   "label": " request  number "
+  },
+  {
+   "fieldname": "bond_value",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Bond Value ",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:in_list([\"Tender Bid Bond\"], doc.check_type)",
+   "fieldname": "from_quotation",
+   "fieldtype": "Link",
+   "label": "From Quotation ",
+   "options": "Quotation"
+  },
+  {
+   "depends_on": "eval:in_list([\"Performance bond\", \"Maintenance bond\"], doc.check_type)",
+   "fieldname": "from_sales_order",
+   "fieldtype": "Link",
+   "label": "From sales order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "column_break_gins",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bond_purpose",
+   "fieldtype": "Select",
+   "label": "Bond Purpose",
+   "options": "\nCustoms Bank Guarantee\nBid Bond\nPerformance bond Maintenance bond"
+  },
+  {
+   "fieldname": "issued_from_bank",
+   "fieldtype": "Link",
+   "label": "Issued from Bank",
+   "options": "Bank"
+  },
+  {
+   "fieldname": "issuing_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Issuing Date ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expiry__date",
+   "fieldtype": "Date",
+   "label": "Expiry  Date "
+  },
+  {
+   "fieldname": "bond_status",
+   "fieldtype": "Select",
+   "label": "Bond Status ",
+   "options": "Submitted\nExpired\nUpdated\nReleased"
+  },
+  {
+   "depends_on": "eval:in_list([\"Performance bond\", \"Maintenance bond\"], doc.check_type)",
+   "fieldname": "final_referral_number",
+   "fieldtype": "Data",
+   "label": "final referral number "
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "RDB-.####",
+   "print_hide": 1,
+   "set_only_once": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Quotation",
+   "link_fieldname": "name"
+  }
+ ],
+ "modified": "2024-12-09 10:51:10.916348",
+ "modified_by": "Administrator",
+ "module": "Custom Fst",
+ "name": "Refundable Deposits and Bonds",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
