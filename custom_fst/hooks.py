@@ -11,13 +11,15 @@ doctype_js = {
     
     "Quotation" : "public/js/quotation.js",
     "Sales Order":"public/js/delivery_note.js",
-    "Delivery Note": "public/js/delivery_note.js"
+    "Delivery Note": "public/js/delivery_note.js",
+    "Sales Invoice":"public/js/sales_invoice.js"
 
 
 
 }
 override_doctype_class = {
     "Quotation":"custom_fst.overrides.quotation.CustomQuotation",
+    "Sales Invoice":"custom_fst.overrides.sales_invoice.CustomSalesInvoice"
 
     }
 
@@ -32,11 +34,12 @@ fixtures = [
     {
         "doctype": "Custom Field",
         "filters": [
-            ["dt", "=", "Quotation"],
-            ["fieldname", "=", "custom_make_gl"]
+            ["fieldname", "in", ["custom_make_gl", "fst_transfer_stock", "fst_main_warehouse", "fst_sub_warehouse"]]
         ]
     }
 ]
+
+
 
 # required_apps = []
 

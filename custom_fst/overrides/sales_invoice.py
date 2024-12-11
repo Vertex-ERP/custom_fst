@@ -79,7 +79,6 @@ def make_delivery_note(source_name, target_doc=None):
         target_doc
     )
 
-    # حساب المجاميع
     set_totals(doc)
 
     return doc
