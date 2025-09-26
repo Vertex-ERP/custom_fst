@@ -58,8 +58,7 @@
    "fieldname": "bond_value",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Bond Value ",
-   "reqd": 1
+   "label": "Bond Value "
   },
   {
    "depends_on": "eval:in_list([\"Tender Bid Bond\"], doc.check_type)",
@@ -140,7 +139,7 @@
    "link_fieldname": "name"
   }
  ],
- "modified": "2024-12-09 10:51:10.916348",
+ "modified": "2024-12-24 18:24:22.685198",
  "modified_by": "Administrator",
  "module": "Custom Fst",
  "name": "Refundable Deposits and Bonds",

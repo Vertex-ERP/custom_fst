@@ -5,10 +5,18 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "bid_bond_account",
+  "quotation_accounts_section",
+  "quotation_accounts_column",
   "buy_value_account",
   "miscellaneous_expenses_bid_account",
+  "miscellaneous_expenses__account",
+  "refundable_deposits_and_bonds_column",
+  "bid_bond_account",
+  "beneficiary_account",
+  "cost_center_section",
+  "company_account_column",
   "account",
+  "cost_center_column",
   "cost_center"
  ],
  "fields": [
@@ -41,12 +49,52 @@
    "fieldtype": "Link",
    "label": "Cost Center",
    "options": "Cost Center"
+  },
+  {
+   "fieldname": "quotation_accounts_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "miscellaneous_expenses__account",
+   "fieldtype": "Link",
+   "label": "Miscellaneous expenses  Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "quotation_accounts_column",
+   "fieldtype": "Column Break",
+   "label": "Quotation Accounts"
+  },
+  {
+   "fieldname": "refundable_deposits_and_bonds_column",
+   "fieldtype": "Column Break",
+   "label": "Refundable Deposits and Bonds"
+  },
+  {
+   "fieldname": "beneficiary_account",
+   "fieldtype": "Link",
+   "label": "Beneficiary Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "cost_center_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "company_account_column",
+   "fieldtype": "Column Break",
+   "label": "Company Account"
+  },
+  {
+   "fieldname": "cost_center_column",
+   "fieldtype": "Column Break",
+   "label": "Cost Center"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-11-19 11:17:15.388865",
+ "modified": "2025-02-17 21:41:50.486059",
  "modified_by": "Administrator",
  "module": "Custom Fst",
  "name": "Quotation Settings",

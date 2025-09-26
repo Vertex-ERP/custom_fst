@@ -11,15 +11,16 @@ doctype_js = {
     
     "Quotation" : "public/js/quotation.js",
     "Sales Order":"public/js/delivery_note.js",
-    "Delivery Note": "public/js/delivery_note.js",
-    "Sales Invoice":"public/js/sales_invoice.js"
+    # "Delivery Note": "public/js/delivery_note.js",
+    "Sales Invoice":"public/js/sales_invoice.js",
+    "Stock Entry" :"public/js/stock_entry.js"
 
 
 
 }
 override_doctype_class = {
     "Quotation":"custom_fst.overrides.quotation.CustomQuotation",
-    "Sales Invoice":"custom_fst.overrides.sales_invoice.CustomSalesInvoice"
+    "Sales Invoice":"custom_fst.overrides.sales_invoice.CustomSalesInvoices"
 
     }
 
@@ -34,7 +35,8 @@ fixtures = [
     {
         "doctype": "Custom Field",
         "filters": [
-            ["fieldname", "in", ["custom_make_gl", "fst_transfer_stock", "fst_main_warehouse", "fst_sub_warehouse"]]
+            ["fieldname", "in", ["custom_make_gl", "fst_transfer_stock", "fst_main_warehouse", "fst_sub_warehouse","fst_custom_total_qty","fst_custom_total_remains_qty","fst_custom_total_order_qty","fst_custom_order_qty"
+                                 "fst_custom_remains_qty","fst_sub_warehouse","fst_main_warehouse","fst_transfer_stock"]]
         ]
     }
 ]
@@ -210,6 +212,11 @@ fixtures = [
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "custom_fst.event.get_events"
 # }
+override_whitelisted_methods = {
+    "erpnext.selling.doctype.quotation.quotation.make_sales_order": 
+        "custom_fst.overrides.quotation.make_sales_order"
+}
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,

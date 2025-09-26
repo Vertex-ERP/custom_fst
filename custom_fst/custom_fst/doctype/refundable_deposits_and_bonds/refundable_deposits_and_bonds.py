@@ -36,7 +36,7 @@ class RefundableDepositsandBonds(AccountsController):
 
         return gl_entries
 
-    def add_bid_bond_gl_entries(self, gl_entries):
+    def receive_bid_bond_gl_entriess(self, gl_entries):
         if self.bond_value and self.bond_value > 0:
             settings = frappe.get_cached_doc('Quotation Settings', 'Quotation Settings')
 
@@ -48,7 +48,7 @@ class RefundableDepositsandBonds(AccountsController):
                     {
                         "account": settings.bid_bond_account,
                         "debit": self.bond_value,
-                        "against": settings.account,
+                        "against": settings.beneficiary_account,
                         "posting_date": self.issuing_date,
                         "company": self.company,
                     }
@@ -58,7 +58,7 @@ class RefundableDepositsandBonds(AccountsController):
             gl_entries.append(
                 self.get_gl_dict(
                     {
-                        "account": settings.account,
+                        "account": settings.beneficiary_account,
                         "cost_center": settings.cost_center,
                         "credit": self.bond_value,
                         "against": settings.bid_bond_account,
@@ -68,13 +68,44 @@ class RefundableDepositsandBonds(AccountsController):
                 )
             )
 
-    def receive_bid_bond_gl_entriess(self, gl_entries):
+    # def add_bid_bond_gl_entries(self, gl_entries):
+    #         if self.bond_value and self.bond_value > 0:
+    #             settings = frappe.get_cached_doc('Quotation Settings', 'Quotation Settings')
+
+    #         if not settings.bid_bond_account or not settings.account or not settings.cost_center:
+    #             frappe.throw(("Quotation Settings is missing required accounts."))
+
+    #         gl_entries.append(
+    #             self.get_gl_dict(
+    #                 {
+    #                     "account": settings.bid_bond_account,
+    #                     "credit": self.bond_value,
+    #                     "against": settings.account,
+    #                     "posting_date": self.issuing_date,
+    #                     "company": self.company,
+    #                 }
+    #             )
+    #         )
+
+    #         gl_entries.append(
+    #             self.get_gl_dict(
+    #                 {
+    #                     "account": settings.account,
+    #                     "cost_center": settings.cost_center,
+    #                     "debit": self.bond_value,
+    #                     "against": settings.bid_bond_account,
+    #                     "posting_date": self.issuing_date,
+    #                     "company": self.company,
+    #                 }
+    #             )
+    #         )
+    def add_bid_bond_gl_entries(self, gl_entries):
+        settings = frappe.get_cached_doc('Quotation Settings', 'Quotation Settings')  # تأكد من تعيينه خارج أي شرط
+
+        if not settings.bid_bond_account or not settings.account or not settings.cost_center:
+            frappe.throw(("Quotation Settings is missing required accounts."))
+
         if self.bond_value and self.bond_value > 0:
-            settings = frappe.get_cached_doc('Quotation Settings', 'Quotation Settings')
-
-            if not settings.bid_bond_account or not settings.account or not settings.cost_center:
-                frappe.throw(("Quotation Settings is missing required accounts."))
-
             gl_entries.append(
                 self.get_gl_dict(
                     {
